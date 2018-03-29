@@ -1,0 +1,240 @@
+﻿
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    margin: 0;
+    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+    /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+    /* -webkit-tap-highlight-color: rgba(0,0,0,0); */
+}
+html {
+    font-size: 16px;
+    height: 100%;
+} 
+@media screen and (min-width: 320px) and (max-width: 360px) {
+    html {
+        font-size: 14.22px;
+    }
+}
+@media screen and (min-width: 360px) and (max-width: 375px) {
+    html {
+        font-size: 16px;
+    }
+}
+@media screen and (min-width: 375px) and (max-width: 1440px) {
+    html {
+        font-size: 16.67px;
+    }
+}
+@media (min-width: 1440px) {
+    html {
+        font-size: 64px;
+    }
+}
+
+/*input,
+textarea {
+    -webkit-user-select: text
+}*/
+
+a {
+    color: #000;
+    padding: 0;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, "黑体", Arial, Tahoma
+}
+
+
+input[type="radio"],
+input[type="checkbox"] {
+    vertical-align: -2px
+}
+
+.main_box {
+    /*position: relative;*/
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    background: url("../images/bg.jpg") center no-repeat;
+    background-size: cover;
+   /* font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, "黑体", Arial, Tahoma*/
+}
+
+.main_box .box {
+    width: 100%;
+    padding-top: 100%;
+}
+
+
+/*.btn_box div {
+    width: 16.4541016rem;
+    height: 5.54101563rem;
+    margin: 0 auto;
+    background-size: 100% 100%;
+}*/
+.btn_box a {
+    display: block;
+    width: 16.4541016rem;
+    height: 5.54101563rem;
+    margin: 0 auto;
+    background-size: 100% 100%;
+}
+.main_box .btn_mode_1 {
+    /*margin-bottom: 2.9296875rem;*/
+    margin-bottom: 2rem;
+    background-image: url("../images/sports_start.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    
+}
+.main_box .btn_mode_2 {
+    background-image: url("../images/entertainment_start.png");
+    background-repeat: no-repeat;
+    background-position: center;   
+}
+.main_box .btn_mode_1:active  {
+    background-image: url("../images/sports_click.png");
+}
+.main_box .btn_mode_2:active  {
+    background-image: url("../images/entertainment_click.png");
+}
+
+
+/*竞技模式*/
+.sports_box {
+   /* position: relative;*/
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    background: url("../images/bg_2.jpg") center no-repeat;
+    background-size: cover;
+    font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, "黑体", Arial, Tahoma
+}
+
+.title {
+    padding-top: 2.34rem;
+}
+/*竞技模式-title*/
+.picture {
+   /* width: 5.96923828rem;
+    height: 5.96923828rem;*/
+    width: 5.66rem;
+    height: 5.66rem;
+    margin-left: auto;
+    margin-right: auto;
+   /* padding-top: 2.34rem;*/
+
+   /* background: red;*/
+  /*  background-image: url("../images/1.jpg");*/
+    border: 0.3rem solid #FFF;
+    border-radius: 3rem;
+}
+/*用户名*/
+.username {
+    width: 5.66rem;
+    height: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.46rem;
+    color: #FFF;
+    text-align: center;
+    font-size: 1.3rem;
+    /*background: green;*/
+    textt-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+/*竞技模式*/
+.sports_piture {
+    width: 15.45rem;
+    height: 4.1rem;
+    background: red;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.53rem;
+    background: url(../images/sports_box.png) center no-repeat;
+    background-size: 15.45rem 4.1rem;
+}
+/*倒计时*/
+.countdown {
+    width: 4.39rem;
+    height: 9.59rem;
+    margin: 0 auto;
+    margin-top: 5.86rem;
+    background: url(../images/3.png) center no-repeat;
+    background-size: 100%;
+}
+
+.answer_content {
+    text-align: center;
+    color: #FFF;
+}
+.second {
+    font-size: 1.4rem;
+    margin-top: 0.81rem;
+    padding-right: 3.15rem;
+    text-align: right;
+    color: rgb(250,50,79);
+    font-weight: 700;
+}
+/*回答*/
+.serial_number {
+    width: 2.34rem;
+    height: 1.38rem;
+    line-height: 1.38rem;
+    font-weight: 700;
+    margin: 0 auto;
+   
+    padding-bottom: 0.1rem;
+    border-bottom: 0.15rem solid #FFF;
+}
+.serial_number:after {
+    content: ".";
+}
+.question_title {
+    width: 16.63rem;
+    height: 3.22rem;
+    margin: 0.73rem auto 0.5rem auto;
+}
+.answer {
+    position: relative;
+   
+}
+.list {
+    /*position: absolute;*/
+    /*left: ;*/
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+}
+.list li {
+    width: 11.42rem;
+    height: 2.64rem;
+    line-height: 2.64rem;
+    margin: 1.32rem auto;
+    background: #FFF;
+    color: #000;
+    border-radius: 1.46rem;
+}
+.success {
+    color: #FFF !important;
+    background: rgb(143,195,32) !important;
+}
+.error {
+    color: #FFF !important;
+    background: rgb(231,0,18) !important;
+}
+/*遮罩层*/
+.mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 17.857rem;
+   /* background-color: #f90;*/
+    z-index: 20;
+}

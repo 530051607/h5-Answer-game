@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- 设定网页字符集 -->
+	<meta charset="UTF-8">
+	<!-- 指定IE和chrome使用最新版渲染当前页面 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<!-- 指定请求和响应遵循的缓存机制 -->
+	<meta http-equiv="Cache-Control" content="no-cache">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="layoutmode" content="standard">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="renderer" content="webkit">
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Pragma" content="no-cache">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/base.min.css">
+</head>
+<body class="sports_box">
+	<div class="title">
+		<!-- 用户头像 -->
+		<div class="picture"></div>
+		<!-- 用户名 -->
+		<div class="username">Awen</div>
+	</div>
+	<div class="sports_piture"></div>
+	<!-- 倒计时 -->
+	<div class="countdown"></div>
+	<div class="content">
+		
+	</div>
+	<script>
+		window.onload = function() {
+			let picture = document.querySelector(".picture");
+			let username = document.querySelector(".username");
+			let sports_piture = document.querySelector(".sports_piture");
+			let countdown = document.querySelector(".countdown");
+
+			/*更改用户头像*/
+			let arrImg = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];
+			/*用户名称*/
+			let arrName = ["Awen","Tom","Jeery","Jack"];
+			let random = parseInt(Math.random()*(arrImg.length-1));
+			
+			let imgSrc = getImgSrc(arrImg[random]);
+			
+			picture.style.backgroundImage = "url("+imgSrc+")";
+			picture.style.backgroundRepeat = "no-repeat";
+			picture.style.backgroundPosition = "center";
+			picture.style.backgroundSize = "5.6rem 5.6rem";
+			
+			// 用户名
+			username.innerText = arrName[random];
+
+			/*倒计时效果*/
+			changeImage(countdown,["./images/1.png","./images/2.png","./images/3.png"],sports_piture);
+
+			// 答题效果控制
+		}
+		
+		function getImgSrc(img) {
+			/*判断传进来的是合法的图片*/
+			let src = "./images/"+ img;
+			
+			return src;
+		}
+		
+		function changeImage(ele,imgArr,sports) {
+			
+			//倒计时  改变图片的source
+			let time = 3;
+			
+			let timer = setInterval(function() {
+				time--;
+				ele.style.backgroundImage = "url("+imgArr[time]+")";
+				//如果3秒过后，那就停止计时器
+				if(time<0) {
+					clearInterval(timer);
+					ele.style.backgroundImage = "none";
+					sports.style.backgroundImage = "none";
+				}
+			}, 1000);
+		}
+
+	</script>
+</body>
+</html>
