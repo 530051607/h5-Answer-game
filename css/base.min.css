@@ -151,7 +151,6 @@ input[type="checkbox"] {
 .sports_piture {
     width: 15.45rem;
     height: 4.1rem;
-    background: red;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1.53rem;
@@ -187,7 +186,8 @@ input[type="checkbox"] {
     line-height: 1.38rem;
     font-weight: 700;
     margin: 0 auto;
-   
+    color: #FFF;
+    text-align: center;
     padding-bottom: 0.1rem;
     border-bottom: 0.15rem solid #FFF;
 }
@@ -198,6 +198,8 @@ input[type="checkbox"] {
     width: 16.63rem;
     height: 3.22rem;
     margin: 0.73rem auto 0.5rem auto;
+    color: #FFF;
+    text-align: center;
 }
 .answer {
     position: relative;
@@ -219,6 +221,7 @@ input[type="checkbox"] {
     background: #FFF;
     color: #000;
     border-radius: 1.46rem;
+    text-align: center;
 }
 .success {
     color: #FFF !important;
@@ -238,3 +241,36 @@ input[type="checkbox"] {
    /* background-color: #f90;*/
     z-index: 20;
 }
+/*--------很遗憾，您没通过----------*/
+.page11 {
+    display: none;
+    text-align: center;
+}
+.page11 .failure {
+    width: 17.72rem;
+    height: 6.6rem;
+    margin-top: 5.05rem;
+
+}
+/*用时*/
+.page11 .use-time {
+    font-size: 2rem;
+    color: #FFF;
+}
+.page11 .question-sum {
+    font-size: 2rem;
+    color: #FFF;
+}
+.page11 .back {
+    display: block;
+    width: 16.45rem;
+    height: 5.54rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    background-image: url("../images/back.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+/*--------很遗憾，您没通过----------*/
