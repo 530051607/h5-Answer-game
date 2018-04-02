@@ -175,6 +175,7 @@ let data = [
 	}
 
 ];
+
 let count = data.length;
 
 // 从数组中取出指定个数且不重复的元素
@@ -183,24 +184,25 @@ let count = data.length;
 $(function() {
 	$(".content").hide();
 
-	let picture = $(".picture");
+	//let picture = $(".picture");
 	let username = $(".username");
 	let sports_piture = $(".sports_piture");
 	
 	let list = $(".list li");
 
 	/*更改用户头像*/
-	let arrImg = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];
+	//let arrImg = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];
 	/*用户名称*/
-	let arrName = ["Awen","Tom","Jeery","Jack"];
-	let random = parseInt(Math.random()*(arrImg.length-1));
+	//let arrName = ["Awen","Tom","Jeery","Jack"];
+	//let random = parseInt(Math.random()*(arrImg.length-1));
 
-	let imgSrc = "./images/"+arrImg[random];
+	//let imgSrc = "./images/"+arrImg[random];
 	
-	picture.css({backgroundImage:"url("+imgSrc+")",backgroundRepeat:"no-repeat",backgroundPosition:"center",backgroundSize:"5.6rem 5.6rem"})
-
+	//picture.css({backgroundImage:"url("+imgSrc+")",backgroundRepeat:"no-repeat",backgroundPosition:"center",backgroundSize:"5.6rem 5.6rem"})
+	let paramter = window.location.search;
+	console.log();
 	// 用户名
-	username.text(arrName[random]);
+	username.text(decodeURI(paramter.substr(1).split("=")[1]));
 
 	/*倒计时效果 3-2-1*/
 	changeImage();

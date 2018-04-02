@@ -23,9 +23,37 @@
 	<div class="box">
 		<div class="btn_box">
 			<!-- 按钮 -->
-			<a href="./sports.html" class="btn_mode_1"></a>
+			<a href="javascript:void(0)" class="btn_mode_1"></a>
 			<!-- <a href="javascript:(0);" class="btn_mode_2"></a> -->
 		</div>
+		<div class="userInfo">
+			<input type="text">
+			<div>请输入您的昵称</div>
+			<button type="button">确定</button>
+
+		</div>
 	</div>
+
+	<script src="./js/jquery.min.js"></script>
+	<script>
+		$(".btn_mode_1").click(function() {
+			$(this).hide();
+
+			$(".userInfo").css({display: "block",top: 0});
+			$(".userInfo input").focus();
+			
+			$(".userInfo button").click(function() {
+				let text = $(".userInfo input").val();
+				
+				if(text === "") {
+					$(".userInfo div").show();
+				} else {
+					// 清空input中的内容
+					$(".userInfo input").val("");
+					window.location.href = "sports.html?username="+encodeURI(text);
+				}
+			});
+		});
+	</script>
 </body>
 </html>
