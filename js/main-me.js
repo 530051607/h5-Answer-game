@@ -175,7 +175,7 @@ let data = [
 	}
 
 ];
-let count = data.length;
+let count = 14;
 
 // 从数组中取出指定个数且不重复的元素
 
@@ -207,29 +207,30 @@ $(function() {
 
 
 	// 初始化选一次题目
-	
-	switchAnswer(data);
+	let temp = parseInt(Math.random()*(data.length-1)); // 重新产生随机数
+	switchAnswer(data,temp);
 
+	console.log(data,61);
 	
 	$(".list li").click(function() {
-
-		let _this = $(this);
-		let isRight = _this.find("span").attr("data-res") == 'success';
-		
 		if(data.length > 0) {
-			let temp = parseInt(Math.random()*(data.length-1)); // 重新产生随机数
+			//let temp = parseInt(Math.random()*(data.length-1)); // 重新产生随机数
 
-			if(isRight) {
-				_this.addClass("success");
-
+			// 变色的逻辑
+			if(($(this).index()+1) === data[temp].result) {
+				$(this).addClass("success");
 				right++;
-				console.log(right);
 			} else {
-				_this.addClass("error");
+				$(this).addClass("error");
 			}
+
+			//switchAnswer(data,($(this).index()));
 			setTimeout(function() {
-				switchAnswer(data,(_this.index()));
-			},100);
+				switchAnswer(data,temp); //将数据和随机数（题目）传进去
+			},1000);
+			
+		
+			console.log(data);
 		}
 
 		// 这里判读我们题目是不是都结束了 data是80道题目
@@ -244,6 +245,38 @@ $(function() {
 		count--; // 题目个数
 	});
 
+	// 问题
+	//let title = "人工智能一词最早是什么时候提出来的？";
+	/*let question_title = $(".question_title");
+	// question_title.text(title);
+	question_title.text(data[dataRandom].answer);
+
+	// 答题效果控制
+
+	for(let i=0; i< list.length; i++) {
+		list[i].innerText = data[dataRandom].question[i];
+	}
+
+
+	let temp = data[dataRandom].index;
+	for(let i=0; i< list.length; i++) {
+		list[i].addEventListener("click",function(e) {
+			console.log($(this).index()+1);
+			let index = $(this).index() + 1;
+			if(index === data[dataRandom].result) {
+				$(this).addClass("success");
+			} else {
+				$(this).addClass("error");
+			}
+
+			let mask = $("<div class='mask'></div>");
+			$(".answer").append(mask);
+
+		},false);
+	}*/
+
+
+
 });
 /**
 * @parameter: dataTemp: 答题的数据
@@ -252,42 +285,34 @@ $(function() {
 */
 
 // function switchAnswer(dataTemp,dataRandom,index) { 15.09分
-function switchAnswer(dataTemp,index) {
-	// debugger;
+//function switchAnswer(dataTemp,index) { 23:52
+function switchAnswer(dataTemp,dataRandom) {
 	let serial_number = $(".serial_number").text("Q"+(i++));
-	let dataRandom = parseInt(Math.random()*(data.length-1));
+	//let dataRandom = parseInt(Math.random()*(data.length-1));
 	
 	let list = $(".list li");
-	let dataNow = dataTemp[dataRandom];
-
-
+	list.removeClass("success error"); // 清除所有的样式 --因为题目切换了
 	// 题目的序号
 	
-	let question_title = $(".question_title").text(dataNow.answer);;
+	let question_title = $(".question_title").text(dataTemp[dataRandom].answer);;
 
-	//先清除所有的样式
-	list.removeClass("error success");
-
+	
 	for(let i=0; i< list.length; i++) {
-		let tempContent = '';
-		if((i+1) === data[dataRandom].result){
-			tempContent = "<span data-res='success'>"+ dataNow.question[i] +"</span>";
-		}else{
-			tempContent = "<span data-res='error'>"+ dataNow.question[i] +"</span>";
-		}
-
-		list.eq(i).html(tempContent);
-
+		list[i].innerText = dataTemp[dataRandom].question[i];
 	}
 
 
-	let temp = dataTemp[dataRandom].result; // 拿到正确答案
-
+	//let temp = dataTemp[dataRandom].result; // 拿到正确答案
+	// index从0开始取的，temp模拟数据从1开始的
+	/*if((index+1) === temp) {
+		right ++; // 说明选择对了
+		
+	}*/
 	data.splice(dataRandom,1); // 将这个元素删除
 }
 
 function countdownSecond() {
-	let aim = 80;
+	let aim = 10;
 	let startTime = aim; // 80s的时间
 	let lastTime = 0; // 结束时间
 	let timer;
@@ -295,11 +320,12 @@ function countdownSecond() {
 	$(".second").text(startTime);
 
 	clearInterval(timer);
-
+	/*17:39*/
 	timer = setInterval(function() {
 		$(".second").text(startTime--);
 		// right 就是答题对的个数，少于那个总的个数
-		if(startTime === 0 && right <= 80) { // 时间到了--清除定时器
+		// if(startTime === 0 && right < 10) {
+		if(startTime === 0 && right < 10) { // 时间到了--清除定时器
 			clearInterval(timer);
 			$(".content").hide();
 			// 结束
@@ -307,21 +333,25 @@ function countdownSecond() {
 			$(".page11").fadeIn();
 		}
 
-		if(lastTime === 80) { // 说明80秒过了
-			clearInterval(timer);
-		}
+		// if(lastTime === 80) { // 说明80秒过了
+		// 	clearInterval(timer);
+		// }
 
 		if(right.length === data.length-1) { // 题目全部答对 --清除定时器
 			clearInterval(timer);
 		}
-		if(count === 0) {// 题目全部答完
+		if(count === 0) {
 			clearInterval(timer);
 		}
 
+		console.log(aim-startTime,231);
 		// 用时
 		$("#nopasstime").text(aim-startTime);
 		$("#questionsum").text(right);// 答对多少道题目
 	}, 1000);
+
+
+	
 
 }
 
@@ -356,9 +386,10 @@ function changeImage() {
 /**
 	1、 先走 图片的倒计时 3-2-1
 	2、 在图片倒计时的函数后面街上countdownSecond() 倒计时 80s
-	3、
-
-
+	3、 第一次初始化题目，不应该有任何逻辑在里面，仅仅就是填充数据
+	4、 在添加样式和移除样式时，其实是没有效果的
+	5、 从题库中筛选80道题目--不能重复
+	
 	结束游戏的规则
 	1、时间结束  从80->0
 	2、在时间内，答完80道题目
